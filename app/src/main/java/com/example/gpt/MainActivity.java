@@ -37,7 +37,7 @@ import okhttp3.ResponseBody;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String API_KEY="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";
+    private static final String API_KEY="";     //your api key
     RecyclerView recyclerView;
     TextView welcomeTextView;
     EditText messageEditText;
@@ -63,7 +63,6 @@ public class MainActivity extends AppCompatActivity {
         messageEditText = findViewById(R.id.message_edit_text);
         sendButton = findViewById(R.id.send_btn);
 
-        //配置recycle view
         messageAdapter = new MessageAdapter(messageList);
         recyclerView.setAdapter(messageAdapter);
         LinearLayoutManager llm = new LinearLayoutManager(this);
@@ -117,8 +116,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 messageList.add(new Message(message, sendBy));
-                messageAdapter.notifyDataSetChanged();//通知适配器数据已更新
-                //将RecyclerView滚动到最新消息的位置,每次新消息添加到聊天列表时，RecyclerView都会滚动到最底部
+                messageAdapter.notifyDataSetChanged();
                 recyclerView.smoothScrollToPosition(messageAdapter.getItemCount());
             }
         });
@@ -132,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
         sendButton.setEnabled(false);
 
         chatApiBuffer="";
-        messageList.add(new Message("正在回复~~", Message.SEND_BY_BOT));
+        messageList.add(new Message("Responding...", Message.SEND_BY_BOT));
         multiChatList.add(new ChatMessage(ChatRole.ASSISTANT).setText(question));
         chatApiClient.sendPromptList(multiChatList);
 

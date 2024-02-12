@@ -26,7 +26,6 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MyViewHo
         return myViewHolder;
     }
 
-    //获取position位置的Message对象，然后根据消息的发送者决定将消息放在左边还是右边
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Message message = messageList.get(position);
