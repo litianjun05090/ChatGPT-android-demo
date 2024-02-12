@@ -119,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
             throw new RuntimeException(e);
         }
 
-        RequestBody body = RequestBody.create(jsonBody.toString(), JSON);
+        RequestBody body = RequestBody.create(JSON, jsonBody.toString());
         Request request = new Request.Builder()
                 .url("https://api.openai.com/v1/chat/completions") // 服务器地址
                 .header("Authorization", "Bearer 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") // 填写你的key
